@@ -37,3 +37,7 @@ jobs:
         with:
           name: jest-coverage-report
           path: coverage/
+
+      
+      - name: Build Docker image
+        run: docker build -t calculator-app .
