@@ -1,8 +1,7 @@
 const express = require("express");
+const calculator = require("./calculator");
 
 const app = express();
-
-const PORT = 3000;
 
 
 // Home page
@@ -17,7 +16,7 @@ app.get("/add/:a/:b", (req, res) => {
     const a = Number(req.params.a);
     const b = Number(req.params.b);
 
-    const result = a + b;
+    const result = calculator.add(a, b);
 
     res.send(`Result: ${result}`);
 });
@@ -63,8 +62,4 @@ app.get("/divide/:a/:b", (req, res) => {
 
 });
 
-
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+module.exports = app;
