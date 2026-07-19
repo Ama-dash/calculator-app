@@ -48,8 +48,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Check Docker username
-        run: echo "Username is ${{ secrets.DOCKERHUB_USERNAME }}"
-
-      - name: Tag Docker image
-        run: docker tag calculator-app ${{ secrets.DOCKERHUB_USERNAME }}/calculator-app:latest
+      - name: Push Docker image
+        run: |
+          docker tag calculator-app ${{ secrets.DOCKERHUB_USERNAME }}/calculator-app:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/calculator-app:latest
